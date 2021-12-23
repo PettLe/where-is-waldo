@@ -38,3 +38,4 @@ const info = () => {
 };
 
 export default info;
+export { app };
