@@ -7,7 +7,7 @@ function App() {
   console.log("Kenties yhden isommankin");
   return (
     <div className="App">
-      <h1>Tämä on App</h1>
+      <h1>Find Waldo!</h1>
     </div>
   );
 }
