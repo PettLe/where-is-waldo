@@ -41,7 +41,6 @@ function GameBoard() {
         display: "none",
       });
     }
-    //console.log(e.target.parentNode.offsetTop);
   };
 
   return (
@@ -53,9 +52,11 @@ function GameBoard() {
         alt="Where's Waldo Game"
       />
       <div style={answerStyles} className="answerBox">
-        <p className="answerOption">Waldo</p>
-        <p className="answerOption">Wizard</p>
-        <p className="answerOption">joku emt</p>
+        <ul>
+          <li className="answerOption">Waldo</li>
+          <li className="answerOption">Wizard</li>
+          <li className="answerOption">joku emt</li>
+        </ul>
       </div>
     </div>
   );
