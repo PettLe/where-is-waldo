@@ -17,11 +17,11 @@ function GameBoard() {
   });
 
   const onMouseMove = (e) => {
-    setCoord({ x: e.clientX, y: e.clientY });
+    setCoord({ x: e.pageX, y: e.pageY });
     console.log(coord);
   };
 
-  const openAnswers = () => {
+  const openAnswers = (e) => {
     if (!clicked) {
       console.log(answerStyles.top);
       console.log(answerStyles.left);
@@ -41,6 +41,7 @@ function GameBoard() {
         display: "none",
       });
     }
+    //console.log(e.target.parentNode.offsetTop);
   };
 
   return (
