@@ -2,10 +2,27 @@
   text-align: center;
 }
 
+/*.GameBoard {
+  position: relative;
+}*/
+
 .GameBoard img {
   width: 100vw;
 }
 
 .Instructions {
   text-align: center;
+}
+
+.answerBox {
+  margin: 0;
+}
+.answerOption {
+  padding: 2px;
+  border: 2px solid black;
+  background-color: antiquewhite;
+}
+
+.answerOption:hover {
+  background-color: lightblue;
 }

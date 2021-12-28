@@ -1,7 +1,7 @@
 import "./App.css";
 import GameBoard from "./GameBoard";
 import Instructions from "./Instructions";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function Game(props) {
   const [start, setStart] = useState(false);
