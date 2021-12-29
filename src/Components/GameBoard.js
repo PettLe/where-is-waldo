@@ -43,6 +43,32 @@ function GameBoard() {
     }
   };
 
+  //Array of coordinates just to test a concept
+  const coordsX = [1071, 1107];
+  const coordsY = [485, 544];
+
+  const answers = [
+    { character: "waldo", topX: 1071, topY: 485, bottomX: 1107, bottomY: 544 },
+  ];
+
+  const checkClick = (e) => {
+    // console.log(answers[0].character);
+    // console.log(e.target.dataset.id);
+    if (
+      answerStyles.left >= answers[0].topX &&
+      answerStyles.left <= answers[0].bottomX
+    ) {
+      if (
+        answerStyles.top >= answers[0].topY &&
+        answerStyles.top <= answers[0].bottomY
+      ) {
+        if (answers[0].character === e.target.dataset.id) {
+          return console.log("OIKEA ALUE!");
+        }
+      }
+    }
+  };
+
   return (
     <div className="GameBoard">
       <img
@@ -53,9 +79,15 @@ function GameBoard() {
       />
       <div style={answerStyles} className="answerBox">
         <ul>
-          <li className="answerOption">Waldo</li>
-          <li className="answerOption">Wizard</li>
-          <li className="answerOption">joku emt</li>
+          <li className="answerOption" onClick={checkClick} data-id="waldo">
+            Waldo
+          </li>
+          <li className="answerOption" onClick={checkClick} value="wizard">
+            Wizard
+          </li>
+          <li className="answerOption" onClick={checkClick} value="antiwaldo">
+            joku emt
+          </li>
         </ul>
       </div>
     </div>
