@@ -2,7 +2,7 @@ import "./App.css";
 import waldo1 from "../waldo1.jpeg";
 import { useState, useEffect } from "react";
 
-function GameBoard() {
+function GameBoard(props) {
   const [coord, setCoord] = useState({ x: 0, y: 0 });
   const [answerStyles, setAnswerStyles] = useState({
     position: "absolute",
@@ -12,6 +12,9 @@ function GameBoard() {
   });
   const [clicked, setClicked] = useState(false);
 
+  const { charactersLeft, setCharactersLeft } = props;
+
+  //Here start the timer
   useEffect(() => {
     console.log("Here starts the timer!");
   });
@@ -43,27 +46,33 @@ function GameBoard() {
     }
   };
 
-  //Array of coordinates just to test a concept
-  const coordsX = [1071, 1107];
-  const coordsY = [485, 544];
-
+  //Array of objects / coordinates just to test a concept
   const answers = [
     { character: "waldo", topX: 1071, topY: 485, bottomX: 1107, bottomY: 544 },
+    { character: "odlaw", topX: 749, topY: 783, bottomX: 783, bottomY: 831 },
+    {
+      character: "wizard",
+      topX: 1596,
+      topY: 1070,
+      bottomX: 1672,
+      bottomY: 1172,
+    },
   ];
 
   const checkClick = (e) => {
-    // console.log(answers[0].character);
-    // console.log(e.target.dataset.id);
-    if (
-      answerStyles.left >= answers[0].topX &&
-      answerStyles.left <= answers[0].bottomX
-    ) {
+    for (let i = 0; i < 3; i++) {
       if (
-        answerStyles.top >= answers[0].topY &&
-        answerStyles.top <= answers[0].bottomY
+        answerStyles.left >= answers[i].topX &&
+        answerStyles.left <= answers[i].bottomX
       ) {
-        if (answers[0].character === e.target.dataset.id) {
-          return console.log("OIKEA ALUE!");
+        if (
+          answerStyles.top >= answers[i].topY &&
+          answerStyles.top <= answers[i].bottomY
+        ) {
+          if (answers[i].character === e.target.dataset.id) {
+            setCharactersLeft(charactersLeft - 1);
+            return console.log("OIKEIN! Se on " + answers[i].character);
+          }
         }
       }
     }
@@ -79,14 +88,15 @@ function GameBoard() {
       />
       <div style={answerStyles} className="answerBox">
         <ul>
+          <li className="charactersLeft">Characters left: {charactersLeft}</li>
           <li className="answerOption" onClick={checkClick} data-id="waldo">
             Waldo
           </li>
-          <li className="answerOption" onClick={checkClick} value="wizard">
-            Wizard
+          <li className="answerOption" onClick={checkClick} data-id="odlaw">
+            Odlaw
           </li>
-          <li className="answerOption" onClick={checkClick} value="antiwaldo">
-            joku emt
+          <li className="answerOption" onClick={checkClick} data-id="wizard">
+            Wizard
           </li>
         </ul>
       </div>
