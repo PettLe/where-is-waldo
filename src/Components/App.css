@@ -39,3 +39,13 @@
 .answerOption:hover {
   background-color: lightblue;
 }
+
+.timer {
+  background-color: rgba(105, 105, 105, 0.5);
+  position: fixed;
+  top: 1vh;
+  padding: 1vh 1vh 1vh 1vh;
+  margin-left: 3vw;
+  font-size: xx-large;
+  font-weight: 700;
+}

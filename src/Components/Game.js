@@ -9,7 +9,6 @@ function Game(props) {
 
   const handleStart = () => {
     setStart(true);
-    console.log(start);
   };
 
   if (start) {

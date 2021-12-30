@@ -11,13 +11,17 @@ function GameBoard(props) {
     display: "none",
   });
   const [clicked, setClicked] = useState(false);
+  const [timer, setTimer] = useState(0);
 
   const { charactersLeft, setCharactersLeft } = props;
 
   //Here start the timer
   useEffect(() => {
-    console.log("Here starts the timer!");
-  });
+    const interval = setInterval(() => {
+      setTimer(() => timer + 1);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [timer]);
 
   const onMouseMove = (e) => {
     setCoord({ x: e.pageX, y: e.pageY });
@@ -80,6 +84,7 @@ function GameBoard(props) {
 
   return (
     <div className="GameBoard">
+      <div className="timer">Time: {timer}</div>
       <img
         onMouseMove={onMouseMove}
         onClick={openAnswers}
