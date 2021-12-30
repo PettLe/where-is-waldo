@@ -8,3 +8,7 @@ Getting Firebase started is still a major struggle. Something just makes it so h
 ---
 
 Creating answer box div which opens on a click was simple. I had the right idea how to get the and save the coordinates etc, but struggled a bit because I was trying to use clientX instead of pageX.
+
+Saving coordinates into the Firestore was of course easy, nothing speacial there. Getting them not so complicated either. I just had to find the basic syntax how to use
+db, collection and snapshots to get stuff. Using that data to determine if player has found a character was simple, mostly because I built the functions first using
+hardcoded arrays. Had to just update Firestore to take place of the array.

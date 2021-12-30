@@ -1,6 +1,7 @@
 import "./App.css";
 import waldo1 from "../waldo1.jpeg";
 import { useState, useEffect } from "react";
+import { getCoordinates } from "./firebase.js";
 
 function GameBoard(props) {
   const [coord, setCoord] = useState({ x: 0, y: 0 });
@@ -12,6 +13,7 @@ function GameBoard(props) {
   });
   const [clicked, setClicked] = useState(false);
   const [timer, setTimer] = useState(0);
+  const [answerCoordinates, setAnswerCoordinates] = useState(getCoordinates());
 
   const { charactersLeft, setCharactersLeft } = props;
 
@@ -25,13 +27,10 @@ function GameBoard(props) {
 
   const onMouseMove = (e) => {
     setCoord({ x: e.pageX, y: e.pageY });
-    console.log(coord);
   };
 
   const openAnswers = (e) => {
     if (!clicked) {
-      console.log(answerStyles.top);
-      console.log(answerStyles.left);
       setClicked(!clicked);
       setAnswerStyles({
         ...answerStyles,
@@ -50,32 +49,21 @@ function GameBoard(props) {
     }
   };
 
-  //Array of objects / coordinates just to test a concept
-  const answers = [
-    { character: "waldo", topX: 1071, topY: 485, bottomX: 1107, bottomY: 544 },
-    { character: "odlaw", topX: 749, topY: 783, bottomX: 783, bottomY: 831 },
-    {
-      character: "wizard",
-      topX: 1596,
-      topY: 1070,
-      bottomX: 1672,
-      bottomY: 1172,
-    },
-  ];
-
   const checkClick = (e) => {
     for (let i = 0; i < 3; i++) {
       if (
-        answerStyles.left >= answers[i].topX &&
-        answerStyles.left <= answers[i].bottomX
+        answerStyles.left >= answerCoordinates[i].topX &&
+        answerStyles.left <= answerCoordinates[i].bottomX
       ) {
         if (
-          answerStyles.top >= answers[i].topY &&
-          answerStyles.top <= answers[i].bottomY
+          answerStyles.top >= answerCoordinates[i].topY &&
+          answerStyles.top <= answerCoordinates[i].bottomY
         ) {
-          if (answers[i].character === e.target.dataset.id) {
+          if (answerCoordinates[i].character === e.target.dataset.id) {
             setCharactersLeft(charactersLeft - 1);
-            return console.log("OIKEIN! Se on " + answers[i].character);
+            return console.log(
+              "OIKEIN! Se on " + answerCoordinates[i].character
+            );
           }
         }
       }

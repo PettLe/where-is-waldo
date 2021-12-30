@@ -1,8 +1,9 @@
 import "./App.css";
-import info from "./firebase.js";
+import { info, getCoordinates } from "./firebase.js";
 
 function App() {
   info();
+  console.log(getCoordinates());
 
   return (
     <div className="App">

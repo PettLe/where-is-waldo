@@ -27,9 +27,9 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore();
-const colRef = collection(db, "hiscore");
 
 const info = () => {
+  const colRef = collection(db, "hiscore");
   onSnapshot(colRef, (snapshot) => {
     snapshot.docs.forEach((doc) => {
       console.log({ ...doc.data(), id: doc.id });
@@ -37,5 +37,16 @@ const info = () => {
   });
 };
 
-export default info;
+const getCoordinates = () => {
+  const coordinates = [];
+  const colRef = collection(db, "coordinates");
+  onSnapshot(colRef, (snapshot) => {
+    snapshot.docs.forEach((doc) => {
+      coordinates.push({ ...doc.data(), id: doc.id });
+    });
+  });
+  return coordinates;
+};
+
+export { info, getCoordinates };
 export { app };
