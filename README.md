@@ -12,3 +12,5 @@ Creating answer box div which opens on a click was simple. I had the right idea 
 Saving coordinates into the Firestore was of course easy, nothing speacial there. Getting them not so complicated either. I just had to find the basic syntax how to use
 db, collection and snapshots to get stuff. Using that data to determine if player has found a character was simple, mostly because I built the functions first using
 hardcoded arrays. Had to just update Firestore to take place of the array.
+
+Getting serverTimestamp presented some issues, weird enough. After getting it to work I have no idea why it was so hard. It shouldn't be, and isn't.

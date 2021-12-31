@@ -1,7 +1,13 @@
 // Import the functions you need from the SDKs you need
 
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, onSnapshot } from "@firebase/firestore";
+import {
+  getFirestore,
+  collection,
+  onSnapshot,
+  serverTimestamp,
+  Timestamp,
+} from "@firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
 
@@ -36,6 +42,7 @@ const info = () => {
     });
   });
 };
+serverTimestamp();
 
 const getCoordinates = () => {
   const coordinates = [];
@@ -48,5 +55,11 @@ const getCoordinates = () => {
   return coordinates;
 };
 
-export { info, getCoordinates };
+//Get a server timestamp in seconds
+const time = () => {
+  const time = new Date(Timestamp.now().seconds * 1000);
+  console.log(time.getSeconds());
+};
+
+export { info, time, getCoordinates };
 export { app };
