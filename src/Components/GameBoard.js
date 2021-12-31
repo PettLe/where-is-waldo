@@ -61,9 +61,15 @@ function GameBoard(props) {
         ) {
           if (answerCoordinates[i].character === e.target.dataset.id) {
             setCharactersLeft(charactersLeft - 1);
-            return console.log(
-              "OIKEIN! Se on " + answerCoordinates[i].character
-            );
+            if (charactersLeft > 1) {
+              e.target.style.backgroundColor = "lightgreen";
+              return console.log(
+                "OIKEIN! Se on " + answerCoordinates[i].character
+              );
+            } else {
+              setTimer(timer);
+              alert("You won! Your time was " + timer);
+            }
           }
         }
       }
