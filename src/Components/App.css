@@ -62,10 +62,23 @@
   top: 25vh;
   left: 27vw;
   width: 45vw;
-  background-color: antiquewhite;
+  background-color: rgb(255, 246, 235);
+  padding: 5vh;
+  border-radius: 25px;
+  border: 2px solid black;
+  box-shadow: 5px 5px 5px rgb(146, 146, 146);
 }
 
-.score {
+.score,
+.singleScore {
   display: flex;
   justify-content: space-around;
+}
+.score p {
+  font-weight: 700;
+}
+
+.scoreWrapper {
+  display: flex;
+  flex-direction: column;
 }

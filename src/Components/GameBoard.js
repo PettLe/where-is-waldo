@@ -1,7 +1,7 @@
 import "./App.css";
 import waldo1 from "../waldo1.jpeg";
 import { useState, useEffect } from "react";
-import { getCoordinates, time } from "./firebase.js";
+import { getCoordinates, getHiscores, time } from "./firebase.js";
 
 function GameBoard(props) {
   const [coord, setCoord] = useState({ x: 0, y: 0 });

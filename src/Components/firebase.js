@@ -7,6 +7,9 @@ import {
   onSnapshot,
   serverTimestamp,
   Timestamp,
+  orderBy,
+  limit,
+  query,
 } from "@firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -37,7 +40,8 @@ const db = getFirestore();
 const getHiscores = () => {
   const hiScores = [];
   const colRef = collection(db, "hiscore");
-  onSnapshot(colRef, (snapshot) => {
+  const q = query(colRef, orderBy("score", "asc"), limit(10));
+  onSnapshot(q, (snapshot) => {
     snapshot.docs.forEach((doc) => {
       hiScores.push({ ...doc.data(), id: doc.id });
     });

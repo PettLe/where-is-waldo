@@ -33,12 +33,18 @@ function App() {
       <button onClick={openScores}>Hi-Scores</button>
       <div className="scoreBoard" style={scoreBoardStyles}>
         <h2>Hi-scores:</h2>
-        {hiScores.map((score) => (
+        <div className="scoreWrapper">
           <div className="score">
-            <p>Player: {score.name}</p>
-            <p>Time: {score.score}</p>
+            <p>Player:</p>
+            <p>Time:</p>
           </div>
-        ))}
+          {hiScores.map((score) => (
+            <div className="singleScore" key={score.id}>
+              <p>{score.name}</p>
+              <p>{score.score}</p>
+            </div>
+          ))}
+        </div>
         <button onClick={closeScores}>Close</button>
       </div>
     </div>
