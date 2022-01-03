@@ -34,13 +34,15 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore();
 
-const info = () => {
+const getHiscores = () => {
+  const hiScores = [];
   const colRef = collection(db, "hiscore");
   onSnapshot(colRef, (snapshot) => {
     snapshot.docs.forEach((doc) => {
-      console.log({ ...doc.data(), id: doc.id });
+      hiScores.push({ ...doc.data(), id: doc.id });
     });
   });
+  return hiScores;
 };
 serverTimestamp();
 
@@ -62,5 +64,5 @@ const time = () => {
   return parseInt(time);
 };
 
-export { info, time, getCoordinates };
+export { getHiscores, time, getCoordinates };
 export { app };

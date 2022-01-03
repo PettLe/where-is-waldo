@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  padding-bottom: 1vh;
 }
 
 /*.GameBoard {
@@ -54,4 +55,17 @@
   margin-left: 3vw;
   font-size: xx-large;
   font-weight: 700;
+}
+
+.scoreBoard {
+  position: fixed;
+  top: 25vh;
+  left: 27vw;
+  width: 45vw;
+  background-color: antiquewhite;
+}
+
+.score {
+  display: flex;
+  justify-content: space-around;
 }
