@@ -57,8 +57,9 @@ const getCoordinates = () => {
 
 //Get a server timestamp in seconds
 const time = () => {
-  const time = new Date(Timestamp.now().seconds * 1000);
-  console.log(time.getSeconds());
+  // const timeStart = new Date(Timestamp.now().seconds * 1000); Original
+  const time = Timestamp.now().seconds * 1000;
+  return parseInt(time);
 };
 
 export { info, time, getCoordinates };

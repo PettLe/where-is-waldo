@@ -1,7 +1,7 @@
 import "./App.css";
 import waldo1 from "../waldo1.jpeg";
 import { useState, useEffect } from "react";
-import { getCoordinates } from "./firebase.js";
+import { getCoordinates, time } from "./firebase.js";
 
 function GameBoard(props) {
   const [coord, setCoord] = useState({ x: 0, y: 0 });
@@ -14,16 +14,30 @@ function GameBoard(props) {
   const [clicked, setClicked] = useState(false);
   const [timer, setTimer] = useState(0);
   const [answerCoordinates, setAnswerCoordinates] = useState(getCoordinates());
-
+  const [serverTimer, setServerTimer] = useState({
+    start: 0,
+    end: 0,
+  });
+  const [score, setScore] = useState(0);
   const { charactersLeft, setCharactersLeft } = props;
 
   //Here start the timer
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setTimer(() => timer + 1);
+  //   }, 1000);
+  //   return () => clearInterval(interval);
+  // }, [timer]);
+
   useEffect(() => {
-    const interval = setInterval(() => {
-      setTimer(() => timer + 1);
-    }, 1000);
-    return () => clearInterval(interval);
-  }, [timer]);
+    setServerTimer({ ...serverTimer, start: time() });
+  }, []);
+
+  useEffect(() => {
+    console.log("end time is " + serverTimer.end);
+    console.log("final score is " + (serverTimer.end - serverTimer.start));
+    setScore(serverTimer.end - serverTimer.start);
+  }, [serverTimer.end]);
 
   const onMouseMove = (e) => {
     setCoord({ x: e.pageX, y: e.pageY });
@@ -68,7 +82,10 @@ function GameBoard(props) {
               );
             } else {
               setTimer(timer);
-              alert("You won! Your time was " + timer);
+              setServerTimer({ ...serverTimer, end: time() });
+              alert("You won! Your time was " + score);
+              //console.log(serverTimer);
+              console.log("end time was " + serverTimer.end);
             }
           }
         }

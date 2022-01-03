@@ -3,7 +3,7 @@ import { info, time, getCoordinates } from "./firebase.js";
 
 function App() {
   info();
-  time();
+  console.log(time());
   console.log(getCoordinates());
 
   return (
