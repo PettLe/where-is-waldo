@@ -69,13 +69,14 @@ const time = () => {
   return parseInt(time);
 };
 
-const addScore = (score) => {
+const addScore = (playerScore) => {
   let playerName = prompt(
     "Thanks for playing! Give your name and check if you made it to hiScores!"
   );
 
   const colRef = collection(db, "hiscore");
-  addDoc(colRef, { name: playerName, score: score });
+  addDoc(colRef, { name: playerName, score: playerScore });
+  console.log("playerScore is " + playerScore);
 };
 
 export { getHiscores, time, getCoordinates, addScore };

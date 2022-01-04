@@ -15,7 +15,7 @@ function GameBoard(props) {
   const [timer, setTimer] = useState(0);
   const [answerCoordinates, setAnswerCoordinates] = useState(getCoordinates());
   const [serverTimer, setServerTimer] = useState({
-    start: 0,
+    start: time(),
     end: 0,
   });
   const [score, setScore] = useState(0);
@@ -33,15 +33,25 @@ function GameBoard(props) {
 
   useEffect(() => {
     setServerTimer({ ...serverTimer, start: time() });
+    console.log("start " + serverTimer.start);
   }, []);
 
-  useEffect(() => {
-    //console.log("final score is " + (serverTimer.end - serverTimer.start));
-    setScore((serverTimer.end - serverTimer.start) / 1000);
-  }, [serverTimer.end]);
+  // useEffect(() => {
+  //console.log("end " + serverTimer.end);
+  //console.log("difference is " + (serverTimer.end - serverTimer.start));
+  //const points = (serverTimer.end - serverTimer.start) / 1000;
+  //console.log(points);
+  //setScore(points);
+  //}, [serverTimer.end]);
 
   useEffect(() => {
-    addScore(score);
+    if (check) {
+      const points = (serverTimer.end - serverTimer.start) / 1000;
+      console.log("toisen funktion pisteet " + points);
+      addScore(points);
+    } else {
+      console.log("Ei vielä");
+    }
   }, [check]);
 
   const onMouseMove = (e) => {
@@ -92,11 +102,13 @@ function GameBoard(props) {
             } else {
               setTimer(timer);
               setServerTimer({ ...serverTimer, end: time() });
+              const points = serverTimer.end - serverTimer.start;
+              //setScore(points);
+              console.log(points);
               setCheck(true);
               //alert("You won! Your time was " + score);
               //console.log(serverTimer);
 
-              // setScore((serverTimer.end - serverTimer.start) / 1000);
               //  console.log("end time was " + serverTimer.end);
               // addScore(score);
             }

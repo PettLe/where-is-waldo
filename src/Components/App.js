@@ -23,10 +23,6 @@ function App() {
     });
   };
 
-  console.log(hiScores);
-  console.log(time());
-  console.log(getCoordinates());
-
   return (
     <div className="App">
       <h1>Find Waldo!</h1>
