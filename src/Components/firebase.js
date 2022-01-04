@@ -10,6 +10,7 @@ import {
   orderBy,
   limit,
   query,
+  addDoc,
 } from "@firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -68,5 +69,14 @@ const time = () => {
   return parseInt(time);
 };
 
-export { getHiscores, time, getCoordinates };
+const addScore = (score) => {
+  let playerName = prompt(
+    "Thanks for playing! Give your name and check if you made it to hiScores!"
+  );
+
+  const colRef = collection(db, "hiscore");
+  addDoc(colRef, { name: playerName, score: score });
+};
+
+export { getHiscores, time, getCoordinates, addScore };
 export { app };

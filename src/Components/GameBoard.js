@@ -1,7 +1,7 @@
 import "./App.css";
 import waldo1 from "../waldo1.jpeg";
 import { useState, useEffect } from "react";
-import { getCoordinates, getHiscores, time } from "./firebase.js";
+import { getCoordinates, time, addScore } from "./firebase.js";
 
 function GameBoard(props) {
   const [coord, setCoord] = useState({ x: 0, y: 0 });
@@ -19,25 +19,30 @@ function GameBoard(props) {
     end: 0,
   });
   const [score, setScore] = useState(0);
+  const [check, setCheck] = useState();
+
   const { charactersLeft, setCharactersLeft } = props;
 
   //Here start the timer
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setTimer(() => timer + 1);
-  //   }, 1000);
-  //   return () => clearInterval(interval);
-  // }, [timer]);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimer(() => timer + 1);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [timer]);
 
   useEffect(() => {
     setServerTimer({ ...serverTimer, start: time() });
   }, []);
 
   useEffect(() => {
-    console.log("end time is " + serverTimer.end);
-    console.log("final score is " + (serverTimer.end - serverTimer.start));
-    setScore(serverTimer.end - serverTimer.start);
+    //console.log("final score is " + (serverTimer.end - serverTimer.start));
+    setScore((serverTimer.end - serverTimer.start) / 1000);
   }, [serverTimer.end]);
+
+  useEffect(() => {
+    addScore(score);
+  }, [check]);
 
   const onMouseMove = (e) => {
     setCoord({ x: e.pageX, y: e.pageY });
@@ -63,6 +68,10 @@ function GameBoard(props) {
     }
   };
 
+  //  const update = async () => {
+  //   await setScore((serverTimer.end - serverTimer.start) / 1000);
+  //}
+
   const checkClick = (e) => {
     for (let i = 0; i < 3; i++) {
       if (
@@ -83,9 +92,13 @@ function GameBoard(props) {
             } else {
               setTimer(timer);
               setServerTimer({ ...serverTimer, end: time() });
-              alert("You won! Your time was " + score);
+              setCheck(true);
+              //alert("You won! Your time was " + score);
               //console.log(serverTimer);
-              console.log("end time was " + serverTimer.end);
+
+              // setScore((serverTimer.end - serverTimer.start) / 1000);
+              //  console.log("end time was " + serverTimer.end);
+              // addScore(score);
             }
           }
         }
