@@ -36,14 +36,6 @@ function GameBoard(props) {
     console.log("start " + serverTimer.start);
   }, []);
 
-  // useEffect(() => {
-  //console.log("end " + serverTimer.end);
-  //console.log("difference is " + (serverTimer.end - serverTimer.start));
-  //const points = (serverTimer.end - serverTimer.start) / 1000;
-  //console.log(points);
-  //setScore(points);
-  //}, [serverTimer.end]);
-
   useEffect(() => {
     if (check) {
       const points = (serverTimer.end - serverTimer.start) / 1000;
@@ -56,6 +48,7 @@ function GameBoard(props) {
 
   const onMouseMove = (e) => {
     setCoord({ x: e.pageX, y: e.pageY });
+    //console.log("x: " + coord.x + "y: " + coord.y);
   };
 
   const openAnswers = (e) => {
@@ -77,10 +70,6 @@ function GameBoard(props) {
       });
     }
   };
-
-  //  const update = async () => {
-  //   await setScore((serverTimer.end - serverTimer.start) / 1000);
-  //}
 
   const checkClick = (e) => {
     for (let i = 0; i < 3; i++) {

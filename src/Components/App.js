@@ -1,6 +1,6 @@
 import react from "react";
 import "./App.css";
-import { time, getCoordinates, getHiscores } from "./firebase.js";
+import { getHiscores } from "./firebase.js";
 import { useState } from "react";
 
 function App() {

@@ -14,7 +14,7 @@
     "react-timer-hook": "^3.0.5",
     "web-vitals": "^2.1.2"
   },
-  "homepage": "http://pettle.github.io/where-is-waldo",
+  "homepage": "http://findwaldo-pettle.web.app/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
