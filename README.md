@@ -22,10 +22,3 @@ as a score. It worked except when it didn't. But I figured it out. There was a p
 
 For some reason deploying was troublesome (unlike the last Firebase project). This time I had to use the web.app url in the package.json file's homepage section.
 Last time I used GitHub repository's address and it worked just fine. Although now whole repository of that project claims it's a 100% HTML when it's not. At least it's not the case with this project's GH repository.
-
----
-
-Few issues I'd still like to fix (if I have the time):
--High scores show momentarily as a double, unless you refresh.
--When player wins and inputs their name, it would be nice to immediately show hiScores.
--When game is over the front-end timer doesn't stop. (It doesn't affect the points though, they're all server based)
