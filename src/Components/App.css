@@ -3,12 +3,7 @@
   padding-bottom: 1vh;
 }
 
-/*.GameBoard {
-  position: relative;
-}*/
-
 .GameBoard img {
-  /*width: 100vw;*/
   width: 100%;
 }
 

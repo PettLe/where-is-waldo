@@ -64,19 +64,12 @@ const getCoordinates = () => {
 
 //Get a server timestamp in seconds
 const time = () => {
-  // const timeStart = new Date(Timestamp.now().seconds * 1000); Original
   const time = Timestamp.now().seconds * 1000;
   return parseInt(time);
 };
 
 const addScore = (playerScore) => {
-  //const scoreBoard = document.querySelectorAll("singleScore");
-  //for (let i = 0; i < scoreBoard.length; i++) {
-  //  console.log(scoreBoard);
-  //  console.log(scoreBoard[i]);
-  //  scoreBoard[i].innerHTML = "";
-  //}
-  const scoreBoard = document.getElementById("fixthis");
+  const scoreBoard = document.getElementById("scores");
   scoreBoard.innerHTML = "";
   let playerName = prompt(
     "Thanks for playing! Give your name and check if you made it to hiScores!"
@@ -84,7 +77,6 @@ const addScore = (playerScore) => {
 
   const colRef = collection(db, "hiscore");
   addDoc(colRef, { name: playerName, score: playerScore });
-  console.log("playerScore is " + playerScore);
 };
 
 export { getHiscores, time, getCoordinates, addScore };

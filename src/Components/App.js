@@ -34,7 +34,7 @@ function App() {
             <p>Player:</p>
             <p>Time:</p>
           </div>
-          <div id="fixthis">
+          <div id="scores">
             {hiScores.map((score) => (
               <div className="singleScore" key={score.id}>
                 <p>{score.name}</p>

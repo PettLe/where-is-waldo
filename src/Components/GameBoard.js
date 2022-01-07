@@ -18,7 +18,6 @@ function GameBoard(props) {
     start: time(),
     end: 0,
   });
-  const [score, setScore] = useState(0);
   const [check, setCheck] = useState();
 
   const { charactersLeft, setCharactersLeft, handleStart } = props;
@@ -33,23 +32,19 @@ function GameBoard(props) {
 
   useEffect(() => {
     setServerTimer({ ...serverTimer, start: time() });
-    console.log("start " + serverTimer.start);
   }, []);
 
   useEffect(() => {
     if (check) {
       const points = (serverTimer.end - serverTimer.start) / 1000;
-      console.log("toisen funktion pisteet " + points);
       addScore(points);
       handleStart();
     } else {
-      console.log("Ei vielä");
     }
   }, [check]);
 
   const onMouseMove = (e) => {
     setCoord({ x: e.pageX, y: e.pageY });
-    //console.log("x: " + coord.x + "y: " + coord.y);
   };
 
   const openAnswers = (e) => {
@@ -86,23 +81,12 @@ function GameBoard(props) {
             setCharactersLeft(charactersLeft - 1);
             if (charactersLeft > 1) {
               e.target.style.backgroundColor = "lightgreen";
-              return console.log(
-                "OIKEIN! Se on " + answerCoordinates[i].character
-              );
             } else {
               setTimer(timer);
               setServerTimer({ ...serverTimer, end: time() });
               const points = serverTimer.end - serverTimer.start;
-              //setScore(points);
               console.log(points);
               setCheck(true);
-              //alert("You won! Your time was " + score);
-              //console.log(serverTimer);
-
-              //  console.log("end time was " + serverTimer.end);
-              // addScore(score);
-
-              //TÄNNE! Game.js:n handleStart falseksi takas?
             }
           }
         }
