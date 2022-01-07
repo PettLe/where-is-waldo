@@ -67,6 +67,7 @@
   border-radius: 25px;
   border: 2px solid black;
   box-shadow: 5px 5px 5px rgb(146, 146, 146);
+  overflow: scroll;
 }
 
 .score,

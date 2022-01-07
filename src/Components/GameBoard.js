@@ -21,7 +21,7 @@ function GameBoard(props) {
   const [score, setScore] = useState(0);
   const [check, setCheck] = useState();
 
-  const { charactersLeft, setCharactersLeft } = props;
+  const { charactersLeft, setCharactersLeft, handleStart } = props;
 
   //Here start the timer
   useEffect(() => {
@@ -41,6 +41,7 @@ function GameBoard(props) {
       const points = (serverTimer.end - serverTimer.start) / 1000;
       console.log("toisen funktion pisteet " + points);
       addScore(points);
+      handleStart();
     } else {
       console.log("Ei vielä");
     }
@@ -100,6 +101,8 @@ function GameBoard(props) {
 
               //  console.log("end time was " + serverTimer.end);
               // addScore(score);
+
+              //TÄNNE! Game.js:n handleStart falseksi takas?
             }
           }
         }

@@ -70,6 +70,14 @@ const time = () => {
 };
 
 const addScore = (playerScore) => {
+  //const scoreBoard = document.querySelectorAll("singleScore");
+  //for (let i = 0; i < scoreBoard.length; i++) {
+  //  console.log(scoreBoard);
+  //  console.log(scoreBoard[i]);
+  //  scoreBoard[i].innerHTML = "";
+  //}
+  const scoreBoard = document.getElementById("fixthis");
+  scoreBoard.innerHTML = "";
   let playerName = prompt(
     "Thanks for playing! Give your name and check if you made it to hiScores!"
   );

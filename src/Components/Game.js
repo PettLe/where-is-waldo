@@ -8,7 +8,7 @@ function Game(props) {
   const [charactersLeft, setCharactersLeft] = useState(3);
 
   const handleStart = () => {
-    setStart(true);
+    setStart(!start);
   };
 
   if (start) {
@@ -16,6 +16,7 @@ function Game(props) {
       <GameBoard
         charactersLeft={charactersLeft}
         setCharactersLeft={setCharactersLeft}
+        handleStart={handleStart}
       />
     );
   } else {

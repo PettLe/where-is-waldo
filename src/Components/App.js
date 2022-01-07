@@ -34,12 +34,14 @@ function App() {
             <p>Player:</p>
             <p>Time:</p>
           </div>
-          {hiScores.map((score) => (
-            <div className="singleScore" key={score.id}>
-              <p>{score.name}</p>
-              <p>{score.score}</p>
-            </div>
-          ))}
+          <div id="fixthis">
+            {hiScores.map((score) => (
+              <div className="singleScore" key={score.id}>
+                <p>{score.name}</p>
+                <p>{score.score}</p>
+              </div>
+            ))}
+          </div>
         </div>
         <button onClick={closeScores}>Close</button>
       </div>
